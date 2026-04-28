@@ -1,63 +1,22 @@
 # 📘 ArnabLang (al)
 
-A custom-built interpreted programming language written in JavaScript.  
-ArnabLang supports variables, loops, conditionals, and expressions with a unique syntax.
+ArnabLang is a custom interpreted programming language built in JavaScript.  
+It uses a unique syntax while supporting core programming concepts like variables, loops, conditions, and expressions.
 
 ---
 
-# 🚀 Features
+# 🚀 Get Started
 
-- Custom syntax (`ts`, `fw`, `gugugaga`, `milk`, etc.)
-- Variables (with or without initialization)
-- Arithmetic expressions
-- If / Else If / Else conditions
-- For loops
-- Nested blocks support
-- String handling
-- Simple runtime environment
-
----
-
-# 📂 Project Structure
+Clone the repository:
 
 ```bash
-arnablang/
-├── src/
-│   ├── interpreter/
-│   │   └── interpreter.js
-│   ├── runtime/
-│   │   └── environment.js
-│   ├── utils/
-│   │   ├── eval.js
-│   │   └── validator.js
-│   └── index.js
-├── examples/
-│   └── test.al
-├── package.json
-└── README.md
-```
-
----
-
-# ⚙️ Installation
-
-```bash
-git clone <your-repo-link>
+git clone https://github.com/riskchips/arnablang.git
 cd arnablang
-npm install
 ```
 
 ---
 
-# ▶️ Running ArnabLang Code
-
-```bash
-node src/index.js examples/test.al
-```
-
----
-
-# 🧠 Syntax Guide
+# 🧠 Core Syntax & Meaning
 
 ## 🔹 Variables
 
@@ -68,37 +27,87 @@ fw z
 z = 30
 ```
 
+- `ts` → declares a variable (initial assignment)
+- `fw` → declares a variable that can be changed later
+- Variables can be declared without value and assigned later
+
+---
+
+## 🔹 Data Types
+
+```al
+fw a = 10
+fw b = 3.14
+fw c = "hello"
+fw d = 'world'
+fw e = [1,2,3]
+```
+
+- Integers
+- Floats
+- Strings (`""` or `''`)
+- Arrays (`[value, value]`)
+
+---
+
+## 🔹 Expressions
+
+```al
+fw x = 10
+fw y = 20
+fw z = x + y * 2
+```
+
+- Supports `+ - * / %`
+- Works with variables and values
+
+---
+
+## 🔹 Assignment
+
+```al
+fw x
+x = 50
+x = x + 10
+```
+
 ---
 
 ## 🔹 Print
 
 ```al
 gugugaga(x)
-gugugaga("Hello World")
-gugugaga(x + y)
+gugugaga("Hello")
+gugugaga(x + 5)
 ```
+
+- Outputs values or expressions
 
 ---
 
-## 🔹 If / Else If / Else
+## 🔹 Conditions
 
 ```al
 lowk(x > 10){
-  gugugaga("Greater")
+  gugugaga("greater")
 }
 
 ngacontinue(x == 10){
-  gugugaga("Equal")
+  gugugaga("equal")
 }
 
 fr{
-  gugugaga("Smaller")
+  gugugaga("smaller")
 }
 ```
 
+- `lowk` → if  
+- `ngacontinue` → else if  
+- `fr` → else  
+
 ---
 
-## 🔹 Loop (For Loop)
+## 🔹 Loops
 
 ```al
 milk(i = 1; i <= 5; i = i + 1){
@@ -106,9 +115,11 @@ milk(i = 1; i <= 5; i = i + 1){
 }
 ```
 
+- Works like a for loop
+
 ---
 
-## 🔹 Nested Example
+## 🔹 Nested Blocks
 
 ```al
 ts n = 5
@@ -126,43 +137,66 @@ milk(i = 1; i <= n; i = i + 1){
 
 ---
 
-# 🧪 Example Output
+## 🔹 Strings
 
-```txt
-* 
-* * 
-* * * 
-* * * * 
-* * * * * 
+```al
+fw name = "Arnab"
+fw msg = 'Hello'
+gugugaga(name + " " + msg)
 ```
 
 ---
 
-# ⚠️ Error Handling
+## 🔹 Arrays
 
-- Detects undefined variables
-- Basic syntax validation
-- Prevents invalid assignments
-
-Example:
-
-```txt
-ArnabLang Error: Variable 'x' not declared
+```al
+fw arr = [1,2,3]
 ```
 
 ---
 
-# 💡 Future Improvements
+## 🔹 Logical Example
 
-- Function support
-- Arrays & objects
-- Better error messages with line numbers
-- Web-based IDE
-- Removing `Function()` for full parser implementation
+```al
+lowk(i % 2 == 1){
+  gugugaga("odd")
+}
+
+ngacontinue(i % 2 == 0){
+  gugugaga("even")
+}
+```
+
+---
+
+## 🔹 Example Program
+
+```al
+ts n = 5
+
+milk(i = 1; i <= n; i = i + 1){
+  fw row = ""
+
+  milk(j = 1; j <= i; j = j + 1){
+    row = row + j + " "
+  }
+
+  gugugaga(row)
+}
+```
+
+---
+
+# 🚀 ArnabLang Philosophy
+
+ArnabLang is designed to:
+- Explore how programming languages work internally
+- Provide a simplified interpreter model
+- Allow experimentation with custom syntax
 
 ---
 
 # 👨‍💻 Author
 
-Built by you 🚀  
-ArnabLang is a custom experimental programming language project.
+Built by chips
+ArnabLang is a custom experimental programming language.

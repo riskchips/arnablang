@@ -1,11 +1,13 @@
 ts n = 5
 
 milk(i = 1; i <= n; i = i + 1){
-  fw row = ""
 
-  milk(j = 1; j <= i; j = j + 1){
-    row = row + "* "
+  lowk(i % 2 == 1){
+    gugugaga("daddy went shop to buy milk")
   }
 
-  gugugaga(row)
+  ngacontinue(i % 2 == 0){
+    gugugaga("daddy bought milk")
+  }
+
 }
