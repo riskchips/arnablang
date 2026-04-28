@@ -1,13 +1,33 @@
-ts n = 5
+fw A = [[1,2],[3,4]]
+fw B = [[5,6],[7,8]]
+fw C = [[0,0],[0,0]]
 
-milk(i = 1; i <= n; i = i + 1){
+ts n = 2
 
-  lowk(i % 2 == 1){
-    gugugaga("daddy went shop to buy milk")
+milk(i = 0; i < n; i = i + 1){
+
+  milk(j = 0; j < n; j = j + 1){
+
+    fw sum = 0
+
+    milk(k = 0; k < n; k = k + 1){
+      sum = sum + A[i][k] * B[k][j]
+    }
+
+    C[i][j] = sum
+
   }
 
-  ngacontinue(i % 2 == 0){
-    gugugaga("daddy bought milk")
+}
+
+gugugaga("Result Matrix:")
+
+milk(i = 0; i < n; i = i + 1){
+  fw row = ""
+
+  milk(j = 0; j < n; j = j + 1){
+    row = row + C[i][j] + " "
   }
 
+  gugugaga(row)
 }

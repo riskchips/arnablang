@@ -1,4 +1,4 @@
-import { setVar } from "../runtime/environment.js"
+import { setVar, env } from "../runtime/environment.js"
 import { evaluate } from "../utils/eval.js"
 
 export function interpretLine(line) {
@@ -26,16 +26,30 @@ export function interpretLine(line) {
     throw new Error("Invalid declaration: " + line)
   }
 
-  if (/^[a-zA-Z_]\w*\s*=/.test(line)) {
-    const match = line.match(/^([a-zA-Z_]\w*)\s*=\s*(.*)$/)
+  if (/^[a-zA-Z_]\w*(\[[^\]]+\])*\s*=/.test(line)) {
+    const parts = line.split("=")
+    const left = parts[0].trim()
+    const right = parts.slice(1).join("=").trim()
 
-    if (!match) throw new Error("Invalid assignment: " + line)
+    const value = evaluate(right)
 
-    const name = match[1]
-    let expr = match[2].trim()
-    if (expr === "") expr = '""'
+    const nameMatch = left.match(/^([a-zA-Z_]\w*)/)
+    if (!nameMatch) throw new Error("Invalid assignment: " + line)
 
-    setVar(name, evaluate(expr))
+    let target = env[nameMatch[1]]
+
+    const indices = [...left.matchAll(/\[([^\]]+)\]/g)].map(m => evaluate(m[1]))
+
+    if (indices.length === 0) {
+      env[nameMatch[1]] = value
+      return
+    }
+
+    for (let i = 0; i < indices.length - 1; i++) {
+      target = target[indices[i]]
+    }
+
+    target[indices[indices.length - 1]] = value
     return
   }
 
